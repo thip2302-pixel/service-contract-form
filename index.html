@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contrat de Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: 'Arial', sans-serif;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        .reset-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+        .reset-btn:hover {
+            background: #e0e0e0;
+        }
+        .notice {
+            background: #f9f3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📋 Contrat de Service</h1>
+        <p class="subtitle">Veuillez remplir tous les champs obligatoires</p>
+        
+        <div class="notice">
+            <strong>Avis :</strong> Les informations que vous fournirez seront utilisées pour établir votre contrat de service. 
+            Vos données seront traitées conformément à nos politiques de confidentialité.
+        </div>
+
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <!-- Informations du client -->
+            <div class="form-group">
+                <label for="client_name">Nom complet *</label>
+                <input type="text" id="client_name" name="client_name" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="client_email">Adresse courriel *</label>
+                    <input type="email" id="client_email" name="client_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="client_phone">Téléphone *</label>
+                    <input type="tel" id="client_phone" name="client_phone" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="client_address">Adresse</label>
+                    <input type="text" id="client_address" name="client_address">
+                </div>
+                <div class="form-group">
+                    <label for="client_city">Ville</label>
+                    <input type="text" id="client_city" name="client_city">
+                </div>
+            </div>
+
+            <!-- Type de service -->
+            <div class="form-group">
+                <label for="service_type">Type de service *</label>
+                <select id="service_type" name="service_type" required>
+                    <option value="">-- Sélectionnez un service --</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="coaching">Coaching</option>
+                    <option value="therapy">Thérapie</option>
+                    <option value="other">Autre</option>
+                </select>
+            </div>
+
+            <!-- Dates -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start_date">Date de début *</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">Date de fin prévue</label>
+                    <input type="date" id="end_date" name="end_date">
+                </div>
+            </div>
+
+            <!-- Description du service -->
+            <div class="form-group">
+                <label for="service_description">Description du service demandé *</label>
+                <textarea id="service_description" name="service_description" required></textarea>
+            </div>
+
+            <!-- Conditions et acceptation -->
+            <div class="form-group">
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms" required> 
+                    J'accepte les conditions du contrat *
+                </label>
+            </div>
+
+            <!-- Boutons -->
+            <div class="button-group">
+                <button type="submit" class="submit-btn">✓ Soumettre le contrat</button>
+                <button type="reset" class="reset-btn">↻ Réinitialiser</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
