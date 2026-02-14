@@ -14,7 +14,6 @@
             --text-color: #333;
             --border-color: #dee2e6;
         }
-
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
@@ -23,7 +22,6 @@
             margin: 0;
             padding: 20px;
         }
-
         .container {
             max-width: 850px;
             margin: 0 auto;
@@ -32,26 +30,21 @@
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-
         header {
             text-align: center;
             border-bottom: 3px solid var(--secondary-color);
             margin-bottom: 40px;
             padding-bottom: 20px;
         }
-
         h1 { margin: 0; font-size: 24px; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px; }
         h2 { font-size: 18px; margin-top: 10px; color: var(--secondary-color); font-weight: 500; }
         .professional-info { font-size: 14px; color: #666; margin-top: 15px; }
-
         .section {
             margin-bottom: 35px;
             padding-bottom: 20px;
             border-bottom: 1px solid var(--border-color);
         }
-
         .section:last-child { border-bottom: none; }
-
         h3 {
             font-size: 16px;
             text-transform: uppercase;
@@ -60,7 +53,6 @@
             display: flex;
             align-items: center;
         }
-
         h3::before {
             content: "";
             display: inline-block;
@@ -70,10 +62,8 @@
             margin-right: 10px;
             border-radius: 2px;
         }
-
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
-
         input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
             width: 100%;
             padding: 12px 15px;
@@ -83,13 +73,11 @@
             transition: border-color 0.2s, box-shadow 0.2s;
             box-sizing: border-box;
         }
-
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--secondary-color);
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
         }
-
         .radio-group {
             display: flex;
             gap: 20px;
@@ -98,27 +86,29 @@
             padding: 15px;
             border-radius: 8px;
         }
-
         .radio-option { display: flex; align-items: center; cursor: pointer; font-size: 14px; }
         .radio-option input { margin-right: 8px; }
-
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
+        #additional-participants { display: none; }
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             font-size: 14px;
         }
-
         th, td {
             text-align: left;
             padding: 12px;
             border-bottom: 1px solid var(--border-color);
         }
-
         th { background-color: #f8f9fa; font-weight: 600; color: var(--primary-color); }
-
+        .fireflies-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #eef2f7;
+            border-radius: 8px;
+            border-left: 5px solid var(--secondary-color);
+        }
         .urgent-notice {
             background-color: #fff9db;
             border-left: 4px solid #fcc419;
@@ -126,14 +116,12 @@
             margin: 20px 0;
             font-size: 13px;
         }
-
         .consent-box {
             background-color: #f1f3f5;
             padding: 20px;
             border-radius: 8px;
             margin-top: 30px;
         }
-
         .checkbox-option {
             display: flex;
             align-items: flex-start;
@@ -141,9 +129,7 @@
             font-size: 13px;
             cursor: pointer;
         }
-
         .checkbox-option input { margin-top: 3px; margin-right: 10px; }
-
         .signature-section {
             margin-top: 30px;
             padding: 20px;
@@ -151,7 +137,6 @@
             border-radius: 8px;
             text-align: center;
         }
-
         .signature-input {
             font-family: 'Brush Script MT', cursive;
             font-size: 24px;
@@ -163,7 +148,6 @@
             width: 80% !important;
             background: transparent;
         }
-
         .submit-btn {
             background-color: var(--secondary-color);
             color: white;
@@ -177,10 +161,8 @@
             margin-top: 30px;
             transition: background-color 0.2s, transform 0.1s;
         }
-
         .submit-btn:hover { background-color: #2980b9; }
         .submit-btn:active { transform: translateY(1px); }
-
         @media (max-width: 600px) {
             .container { padding: 25px; }
             .grid { grid-template-columns: 1fr; }
@@ -189,7 +171,6 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     <header>
         <h1>Contrat de Service Professionnel</h1>
@@ -206,14 +187,19 @@
             <h3>1. Identification des parties</h3>
             <label>Type de service :</label>
             <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="type_service" value="Individuel" required> Individuel</label>
-                <label class="radio-option"><input type="radio" name="type_service" value="Couple"> Couple</label>
-                <label class="radio-option"><input type="radio" name="type_service" value="Familial"> Familial</label>
+                <label class="radio-option"><input type="radio" name="type_service" value="Individuel" onclick="toggleParticipants(false)" checked required> Individuel</label>
+                <label class="radio-option"><input type="radio" name="type_service" value="Couple" onclick="toggleParticipants(true)"> Couple</label>
+                <label class="radio-option"><input type="radio" name="type_service" value="Familial" onclick="toggleParticipants(true)"> Familial</label>
+            </div>
+
+            <div id="additional-participants" class="form-group">
+                <label for="autres_noms">Nom(s) des autres participants *</label>
+                <input type="text" id="autres_noms" name="autres_noms" placeholder="Nom du conjoint ou des membres de la famille">
             </div>
 
             <div class="grid">
                 <div class="form-group">
-                    <label for="nom_client">Nom complet (Client) *</label>
+                    <label for="nom_client">Nom complet (Client principal) *</label>
                     <input type="text" id="nom_client" name="nom_client" placeholder="Prénom Nom" required>
                 </div>
                 <div class="form-group">
@@ -221,7 +207,6 @@
                     <input type="date" id="date_naissance" name="date_naissance" required>
                 </div>
             </div>
-
             <div class="grid">
                 <div class="form-group">
                     <label for="email">Courriel *</label>
@@ -232,7 +217,6 @@
                     <input type="tel" id="telephone" name="telephone" placeholder="514-000-0000" required>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="adresse">Adresse complète *</label>
                 <input type="text" id="adresse" name="adresse" placeholder="Numéro, rue, ville, code postal" required>
@@ -241,18 +225,27 @@
 
         <div class="section">
             <h3>2. Nature et objectifs</h3>
-            <p style="font-size: 14px;">Services cliniques d'évaluation et d'intervention psychosociale visant à soutenir le fonctionnement social et à résoudre les difficultés identifiées.</p>
+            <p style="font-size: 14px;">Le travailleur social offre des services cliniques d'évaluation et d'intervention psychosociale visant à soutenir le fonctionnement social de la personne, du couple ou de la famille, à favoriser le développement optimal en interaction avec l'environnement et à résoudre les difficultés identifiées.</p>
         </div>
 
         <div class="section">
-            <h3>3. Déontologie et Confidentialité</h3>
-            <p style="font-size: 14px;">Membre de l'OTSTCFQ. Confidentialité stricte sauf exceptions légales (risque imminent de mort, protection de la jeunesse - LPJ).</p>
+            <h3>3. Considérations professionnelles et déontologiques</h3>
+            <p style="font-size: 14px;"><strong>3A) Cadre légal :</strong> Membre de l'OTSTCFQ. Exerce conformément au Code de déontologie des travailleurs sociaux du Québec.</p>
+            <p style="font-size: 14px; margin-top: 10px;"><strong>3B) Confidentialité :</strong> Contenu strictement confidentiel sauf exceptions légales (risque imminent de mort, protection de la jeunesse - LPJ).</p>
             
-            <label>Outil de prise de notes (Fireflies AI) :</label>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="fireflies_ai" value="Accepté" required> J'accepte Fireflies AI</label>
-                <label class="radio-option"><input type="radio" name="fireflies_ai" value="Refusé"> Je refuse (manuscrit)</label>
+            <div class="fireflies-box">
+                <h4 style="margin: 0 0 10px 0; font-size: 14px; color: var(--primary-color);">SECTION 3C) OUTIL DE PRISE DE NOTES (FIREFLIES AI)</h4>
+                <p style="font-size: 13px; margin-bottom: 15px;">Pour une meilleure qualité de présence, j'utilise un outil sécurisé de prise de notes automatique (Fireflies AI). Vos données sont cryptées et protégées selon les normes PIPEDA. Vous pouvez refuser sans impact sur les services.</p>
+                <div class="radio-group" style="background: transparent; padding: 0;">
+                    <label class="radio-option"><input type="radio" name="fireflies_ai" value="Accepté" required> J'accepte l'utilisation de Fireflies AI</label>
+                    <label class="radio-option"><input type="radio" name="fireflies_ai" value="Refusé"> Je refuse (notes manuscrites)</label>
+                </div>
             </div>
+        </div>
+
+        <div class="section">
+            <h3>4. Modalités des rencontres</h3>
+            <p style="font-size: 14px;">Les rencontres se déroulent au bureau de Carignan ou en mode virtuel sécurisé. La durée et la fréquence sont déterminées selon les besoins cliniques.</p>
         </div>
 
         <div class="section">
@@ -267,38 +260,67 @@
                     <tr><td>Familial</td><td>90 min</td><td>180 $</td></tr>
                 </tbody>
             </table>
-            <p style="font-size: 13px;"><strong>Paiement :</strong> Exigible à la fin de chaque séance (Interac ou argent).<br>
-            <strong>Annulation :</strong> Avis de 24h requis, sinon frais de 50 $.</p>
+            <p style="font-size: 13px;"><strong>Paiement :</strong> Exigible à la fin de chaque séance (Interac ou argent comptant). Un reçu sera émis.</p>
+            <p style="font-size: 13px; margin-top: 5px;"><strong>Annulation :</strong> Avis de 24h requis, sinon des frais de 50 $ s'appliquent.</p>
         </div>
 
-        <div class="urgent-notice">
-            <strong>URGENCES :</strong> Ce service n'est pas un service d'urgence. En cas de crise, composez le <strong>911</strong> ou le <strong>811</strong>.
+        <div class="section">
+            <h3>6. Gestion du dossier professionnel</h3>
+            <p style="font-size: 14px;">Un dossier confidentiel est tenu et conservé pendant 5 ans après la fermeture, conformément aux normes de l'Ordre.</p>
+        </div>
+
+        <div class="section">
+            <h3>7. Communications et Disponibilité</h3>
+            <p style="font-size: 14px;">Délai de réponse de 24 à 48 heures ouvrables.</p>
+            <div class="urgent-notice">
+                <strong>URGENCES :</strong> Ce service n'est pas un service d'urgence. En cas de crise, composez le <strong>911</strong> ou le <strong>811</strong>.
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>8. Limites de la relation</h3>
+            <p style="font-size: 14px;">Aucune relation d'affaires ou amicale ne peut être entretenue pendant la durée des services.</p>
+        </div>
+
+        <div class="section">
+            <h3>9. Résolution de conflits</h3>
+            <p style="font-size: 14px;">En cas d'insatisfaction, le client peut en discuter avec le T.S. ou s'adresser au bureau du Syndic de l'OTSTCFQ.</p>
         </div>
 
         <div class="consent-box">
             <h3>10. Consentement et Signature</h3>
-            
             <label class="checkbox-option">
                 <input type="checkbox" name="lu_compris" required>
                 <span>Je déclare avoir lu et compris le présent contrat de service. *</span>
             </label>
-
             <label class="checkbox-option">
                 <input type="checkbox" name="consens_libre" required>
                 <span>Je consens librement à recevoir les services professionnels selon les modalités décrites. *</span>
             </label>
-
             <div class="signature-section">
-                <label>Signature du client (tapez votre nom complet) *</label>
+                <label>Signature numérique (tapez votre nom complet) *</label>
                 <input type="text" name="signature_client" class="signature-input" placeholder="Signature numérique" required>
-                <p style="font-size: 11px; color: #888; margin-top: 10px;">Cette signature électronique a la même valeur légale qu'une signature manuscrite.</p>
+                <p style="font-size: 11px; color: #888; margin-top: 10px;">Cette signature a la même valeur légale qu'une signature manuscrite.</p>
             </div>
         </div>
 
         <button type="submit" class="submit-btn">ENVOYER LE CONTRAT SIGNÉ</button>
-
     </form>
 </div>
 
+<script>
+    function toggleParticipants(show) {
+        const div = document.getElementById('additional-participants');
+        const input = document.getElementById('autres_noms');
+        if (show) {
+            div.style.display = 'block';
+            input.required = true;
+        } else {
+            div.style.display = 'none';
+            input.required = false;
+            input.value = '';
+        }
+    }
+</script>
 </body>
 </html>
