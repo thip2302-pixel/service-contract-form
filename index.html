@@ -5,114 +5,300 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contrat de Service - Pascal Thibault, T.S.</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f4f7f6; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1, h2, h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-color: #dee2e6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+        }
+
+        h1 { margin: 0; font-size: 24px; color: var(--primary-color); text-transform: uppercase; letter-spacing: 1px; }
+        h2 { font-size: 18px; margin-top: 10px; color: var(--secondary-color); font-weight: 500; }
+        .professional-info { font-size: 14px; color: #666; margin-top: 15px; }
+
+        .section {
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:last-child { border-bottom: none; }
+
+        h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h3::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: var(--secondary-color);
+            margin-right: 10px;
+            border-radius: 2px;
+        }
+
         .form-group { margin-bottom: 20px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; }
-        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            background: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .radio-option { display: flex; align-items: center; cursor: pointer; font-size: 14px; }
+        .radio-option input { margin-right: 8px; }
+
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .section { background: #f9f9f9; padding: 20px; border-radius: 6px; margin-bottom: 30px; }
-        .submit-btn { background: #3498db; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; width: 100%; transition: background 0.3s; }
-        .submit-btn:hover { background: #2980b9; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        table, th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        th { background: #f2f2f2; }
-        .header-info { text-align: center; margin-bottom: 40px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th { background-color: #f8f9fa; font-weight: 600; color: var(--primary-color); }
+
+        .urgent-notice {
+            background-color: #fff9db;
+            border-left: 4px solid #fcc419;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        .consent-box {
+            background-color: #f1f3f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .checkbox-option input { margin-top: 3px; margin-right: 10px; }
+
+        .signature-section {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .signature-input {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 24px;
+            text-align: center;
+            border: none !important;
+            border-bottom: 1px solid #000 !important;
+            border-radius: 0 !important;
+            padding: 5px !important;
+            width: 80% !important;
+            background: transparent;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .submit-btn:hover { background-color: #2980b9; }
+        .submit-btn:active { transform: translateY(1px); }
+
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            .grid { grid-template-columns: 1fr; }
+            .radio-group { flex-direction: column; gap: 10px; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header-info">
-            <h1>CONTRAT DE SERVICE PROFESSIONNEL</h1>
-            <h3>TRAVAILLEUR SOCIAL - SERVICES CLINIQUES</h3>
-            <p>Pascal Thibault, T.S. | Permis OTSTCFQ : THIP2001100TS</p>
+
+<div class="container">
+    <header>
+        <h1>Contrat de Service Professionnel</h1>
+        <h2>Travailleur Social - Services Cliniques</h2>
+        <div class="professional-info">
+            <strong>Pascal Thibault, T.S.</strong> | Permis OTSTCFQ : THIP2001100TS<br>
+            438-867-5972 | Carignan, Québec | humanistas.ca
+        </div>
+    </header>
+
+    <form action="https://formspree.io/f/xkovrjnz" method="POST">
+        
+        <div class="section">
+            <h3>1. Identification des parties</h3>
+            <label>Type de service :</label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="type_service" value="Individuel" required> Individuel</label>
+                <label class="radio-option"><input type="radio" name="type_service" value="Couple"> Couple</label>
+                <label class="radio-option"><input type="radio" name="type_service" value="Familial"> Familial</label>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="nom_client">Nom complet (Client) *</label>
+                    <input type="text" id="nom_client" name="nom_client" placeholder="Prénom Nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="date_naissance">Date de naissance *</label>
+                    <input type="date" id="date_naissance" name="date_naissance" required>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="form-group">
+                    <label for="email">Courriel *</label>
+                    <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="telephone">Téléphone *</label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="514-000-0000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="adresse">Adresse complète *</label>
+                <input type="text" id="adresse" name="adresse" placeholder="Numéro, rue, ville, code postal" required>
+            </div>
         </div>
 
-        <form action="https://formspree.io/f/xkovrjnz" method="POST">
-            <div class="section">
-                <h2>1. IDENTIFICATION DES PARTIES</h2>
-                <div class="form-group">
-                    <label>Type de service :</label>
-                    <select name="type_service" required>
-                        <option value="individuel">Individuel</option>
-                        <option value="couple">Couple</option>
-                        <option value="familial">Familial</option>
-                    </select>
-                </div>
+        <div class="section">
+            <h3>2. Nature et objectifs</h3>
+            <p style="font-size: 14px;">Services cliniques d'évaluation et d'intervention psychosociale visant à soutenir le fonctionnement social et à résoudre les difficultés identifiées.</p>
+        </div>
 
-                <div class="grid">
-                    <div class="form-group">
-                        <label>Nom complet (Client 1) *</label>
-                        <input type="text" name="nom_client" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Date de naissance *</label>
-                        <input type="date" name="date_naissance" required>
-                    </div>
-                </div>
-
-                <div class="grid">
-                    <div class="form-group">
-                        <label>Courriel *</label>
-                        <input type="email" name="email_client" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Téléphone *</label>
-                        <input type="tel" name="tel_client" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Adresse complète *</label>
-                    <textarea name="adresse_client" required></textarea>
-                </div>
+        <div class="section">
+            <h3>3. Déontologie et Confidentialité</h3>
+            <p style="font-size: 14px;">Membre de l'OTSTCFQ. Confidentialité stricte sauf exceptions légales (risque imminent de mort, protection de la jeunesse - LPJ).</p>
+            
+            <label>Outil de prise de notes (Fireflies AI) :</label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="fireflies_ai" value="Accepté" required> J'accepte Fireflies AI</label>
+                <label class="radio-option"><input type="radio" name="fireflies_ai" value="Refusé"> Je refuse (manuscrit)</label>
             </div>
+        </div>
 
-            <div class="section">
-                <h2>2. NATURE ET OBJECTIFS DES SERVICES</h2>
-                <p>Évaluation et intervention psychosociale visant à soutenir le fonctionnement social et résoudre les difficultés identifiées.</p>
-            </div>
-
-            <div class="section">
-                <h2>3. CONFIDENTIALITÉ ET DÉONTOLOGIE</h2>
-                <p>Services régis par l'OTSTCFQ. Confidentialité garantie sauf exceptions légales (risque de mort, LPJ, etc.).</p>
-                <div class="form-group">
-                    <label>Outil de prise de notes (Fireflies AI) :</label>
-                    <select name="fireflies_ai" required>
-                        <option value="accepte">J'accepte l'utilisation de Fireflies AI</option>
-                        <option value="refuse">Je refuse (notes manuscrites)</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>5. CONSIDÉRATIONS FINANCIÈRES</h2>
-                <table>
+        <div class="section">
+            <h3>5. Considérations financières</h3>
+            <table>
+                <thead>
                     <tr><th>Service</th><th>Durée</th><th>Tarif</th></tr>
+                </thead>
+                <tbody>
                     <tr><td>Individuel</td><td>50 min</td><td>100 $</td></tr>
                     <tr><td>Couple</td><td>75 min</td><td>150 $</td></tr>
                     <tr><td>Familial</td><td>90 min</td><td>180 $</td></tr>
-                </table>
-                <p><strong>Politique d'annulation :</strong> 24h à l'avance ou frais de 50 $.</p>
-            </div>
+                </tbody>
+            </table>
+            <p style="font-size: 13px;"><strong>Paiement :</strong> Exigible à la fin de chaque séance (Interac ou argent).<br>
+            <strong>Annulation :</strong> Avis de 24h requis, sinon frais de 50 $.</p>
+        </div>
 
-            <div class="section">
-                <h2>10. CONSENTEMENT</h2>
-                <div class="form-group">
-                    <input type="checkbox" name="lu_compris" required> Je déclare avoir lu et compris le présent contrat.
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" name="consens_eclaire" required> Je consens librement à recevoir les services professionnels.
-                </div>
-                <div class="form-group">
-                    <label>Signature (Tapez votre nom complet pour signer) *</label>
-                    <input type="text" name="signature_digitale" required>
-                </div>
-            </div>
+        <div class="urgent-notice">
+            <strong>URGENCES :</strong> Ce service n'est pas un service d'urgence. En cas de crise, composez le <strong>911</strong> ou le <strong>811</strong>.
+        </div>
 
-            <button type="submit" class="submit-btn">ENVOYER LE CONTRAT SIGNÉ</button>
-        </form>
-    </div>
+        <div class="consent-box">
+            <h3>10. Consentement et Signature</h3>
+            
+            <label class="checkbox-option">
+                <input type="checkbox" name="lu_compris" required>
+                <span>Je déclare avoir lu et compris le présent contrat de service. *</span>
+            </label>
+
+            <label class="checkbox-option">
+                <input type="checkbox" name="consens_libre" required>
+                <span>Je consens librement à recevoir les services professionnels selon les modalités décrites. *</span>
+            </label>
+
+            <div class="signature-section">
+                <label>Signature du client (tapez votre nom complet) *</label>
+                <input type="text" name="signature_client" class="signature-input" placeholder="Signature numérique" required>
+                <p style="font-size: 11px; color: #888; margin-top: 10px;">Cette signature électronique a la même valeur légale qu'une signature manuscrite.</p>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">ENVOYER LE CONTRAT SIGNÉ</button>
+
+    </form>
+</div>
+
 </body>
 </html>
