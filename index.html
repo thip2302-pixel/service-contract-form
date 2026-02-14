@@ -186,11 +186,11 @@
         <div class="section">
             <h3>1. Identification des parties</h3>
             <label>Type de service :</label>
-            <div class="radio-group">
-                <label class="radio-option"><input type="radio" name="type_service" value="Individuel" onclick="toggleParticipants(false)" checked required> Individuel</label>
-                <label class="radio-option"><input type="radio" name="type_service" value="Couple" onclick="toggleParticipants(true)"> Couple</label>
-                <label class="radio-option"><input type="radio" name="type_service" value="Familial" onclick="toggleParticipants(true)"> Familial</label>
-            </div>
+            <select id="type_service" name="type_service" onchange="toggleParticipants(this.value)" required>
+                <option value="Individuel" selected>Individuel</option>
+                <option value="Couple">Couple</option>
+                <option value="Familial">Familial</option>
+            </select>
 
             <div id="additional-participants" class="form-group">
                 <label for="autres_noms">Nom(s) des autres participants *</label>
@@ -309,10 +309,10 @@
 </div>
 
 <script>
-    function toggleParticipants(show) {
+    function toggleParticipants(serviceType) {
         const div = document.getElementById('additional-participants');
         const input = document.getElementById('autres_noms');
-        if (show) {
+        if (serviceType !== 'Individuel') {
             div.style.display = 'block';
             input.required = true;
         } else {
